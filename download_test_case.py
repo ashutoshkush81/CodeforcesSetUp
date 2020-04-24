@@ -10,7 +10,7 @@ from termcolor import colored, cprint
 import string 
 
 def remove(string): 
-	return string.translate('\n\t\r') 
+	return string.translate(' \n\t\r') 
 
 
 #Getting urls from the file 

@@ -10,7 +10,7 @@ from termcolor import colored, cprint
 import string 
 
 def remove(string): 
-	return string.translate(None, ' \n\t\r') 
+	return string.translate('\n\t\r') 
 
 
 #Getting urls from the file 
@@ -99,7 +99,5 @@ while True:
                 cprint('Accepted','green','on_grey',attrs=['bold','underline','blink'])
             else:
                 cprint('Wrong Answer!','red','on_grey',attrs=['bold','underline','blink'])
-
-
 
   sys.exit()

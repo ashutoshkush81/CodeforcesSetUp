@@ -7,6 +7,11 @@ import sys
 import os
 import subprocess
 from termcolor import colored, cprint
+import string 
+
+def remove(string): 
+	return string.translate(None, ' \n\t\r') 
+
 
 #Getting urls from the file 
 filename = sys.argv[1] + '.cpp'
@@ -17,7 +22,7 @@ try :
     urls = urls[0]
     f.close()
 except :
-    cprint("File not found!",'red','on_magenta',attrs=['bold','underline','blink'])
+    cprint("File not found!",'red','on_grey',attrs=['bold','underline','blink'])
     sys.exit()
 
 #Getting data from the urls
@@ -78,14 +83,23 @@ while True:
             cprint("Expected Output",'yellow','on_blue',attrs=['bold','dark'])
             print(output)
             inputnumber=inputnumber+1
+
             flag = True
-            for i , j in zip(output.strip(),s.decode('utf-8').strip()):
+            output = remove(output)
+            s = remove(s.decode('utf-8'))
+            if len(output)!=len(s):
+              flag = False
+            
+            for i , j in zip(output,s):
                 if i!=j:
-                    cprint('Wrong Answer!','red','on_grey',attrs=['bold','underline','blink'])
                     flag = False
                     break
+
             if flag:
                 cprint('Accepted','green','on_grey',attrs=['bold','underline','blink'])
+            else:
+                cprint('Wrong Answer!','red','on_grey',attrs=['bold','underline','blink'])
+
 
 
   sys.exit()

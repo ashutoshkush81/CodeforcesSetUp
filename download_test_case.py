@@ -12,7 +12,6 @@ import string
 def remove(string): 
 	return string.translate(' \n\t\r') 
 
-
 #Getting urls from the file 
 filename = sys.argv[1] + '.cpp'
 try :
@@ -85,8 +84,8 @@ while True:
             inputnumber=inputnumber+1
 
             flag = True
-            output = remove(output)
-            s = remove(s.decode('utf-8'))
+            output = remove(output.strip())
+            s = remove(s.decode('utf-8')).strip()
             if len(output)!=len(s):
               flag = False
             
@@ -94,7 +93,8 @@ while True:
                 if i!=j:
                     flag = False
                     break
-
+            print(s)
+            print(output)
             if flag:
                 cprint('Accepted','green','on_grey',attrs=['bold','underline','blink'])
             else:

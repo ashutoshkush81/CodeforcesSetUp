@@ -93,8 +93,8 @@ while True:
                 if i!=j:
                     flag = False
                     break
-            print(s)
-            print(output)
+            # print(s)
+            # print(output)
             if flag:
                 cprint('Accepted','green','on_grey',attrs=['bold','underline','blink'])
             else:

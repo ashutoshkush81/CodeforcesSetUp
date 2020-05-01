@@ -59,6 +59,7 @@ while True:
     parser = problem_parser()
     parser.feed(text.decode('utf-8'))
     inputnumber = 1
+    totalaccepted = 1
     if len(parser.input) != len(parser.output):
       cprint("Error with problem!",'red','on_black',attrs=['bold','underline','blink'])
     else:
@@ -93,11 +94,25 @@ while True:
                 if i!=j:
                     flag = False
                     break
-            # print(s)
-            # print(output)
+
             if flag:
                 cprint('Accepted','green','on_grey',attrs=['bold','underline','blink'])
+                totalaccepted+=1
             else:
                 cprint('Wrong Answer!','red','on_grey',attrs=['bold','underline','blink'])
+
+  if totalaccepted == inputnumber:
+    while True:
+      cprint("Do you want more testcase(y/n)",'cyan')
+      ans = input()
+      if ans.lower() != 'y' :
+        break
+      s = subprocess.check_output("g++ "+ filename,shell=True)
+      if s.decode('utf-8')!=None:
+      # Create an other script which will use to compile a c++ program
+        temp = 'compile.sh ' + filename
+        os.system(temp)
+
+
 
   sys.exit()

@@ -16,7 +16,7 @@
 
 ## Making both scipt executable fromm any place and also declare their alias
 Note - Move your script into the usr/local/bin folder
-
+```
 alias c='clear'
 
 function run() {
@@ -34,7 +34,7 @@ function cf(){
         cd $1
         
 }
-
+```
 ## About test.py
 This is use for download test cases from codeforces and compare with your output with actual output.
 If both are equal then it' will show accepted otherwise it will show wrong answer promte.
